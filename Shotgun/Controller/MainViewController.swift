@@ -11,14 +11,12 @@ import AVFoundation
 
 class MainViewController: UIViewController {
     var mainView: MainView { return self.view as! MainView }
-
-    var reloadAudio: AVAudioPlayer = AVAudioPlayer()
-    var shootAudio: AVAudioPlayer = AVAudioPlayer()
+    var shotgunModel = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.reloadButton.addTarget(self, action: #selector(self.fireButtonTapped), for: .touchUpInside)
-        gunFireSound()
+        shotgunModel.gunFireSound()
     }
     
     override func loadView() {
@@ -29,7 +27,7 @@ class MainViewController: UIViewController {
         if event?.subtype == UIEvent.EventSubtype.motionShake {
             mainView.reloadButton.backgroundColor = UIColor.red
             mainView.reloadButton.setTitle("RELOAD", for: .normal)
-            shootAudio.play()
+            shotgunModel.shootAudio.play()
         }
     }
     
@@ -37,27 +35,7 @@ class MainViewController: UIViewController {
         if mainView.reloadButton.backgroundColor == UIColor.red {
             mainView.reloadButton.backgroundColor = UIColor.green
             mainView.reloadButton.setTitle("FIRE", for: .normal)
-            reloadAudio.play()
+            shotgunModel.reloadAudio.play()
         }
-    }
-    
-    func gunFireSound() {
-        let reloadPath = Bundle.main.path(forResource: "shotgunreload", ofType: "mp3")
-        do {
-            reloadAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: reloadPath!))
-        }
-        catch {
-            print(error)
-        }
-        
-        let shootPath = Bundle.main.path(forResource: "shotgunshoot", ofType: "mp3")
-        do {
-            shootAudio = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: shootPath!))
-        }
-        catch {
-            print(error)
-        }
-
-    }
-    
+    }    
 }
