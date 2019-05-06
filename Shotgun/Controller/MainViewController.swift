@@ -25,15 +25,19 @@ class MainViewController: UIViewController {
         self.view = MainView(frame: UIScreen.main.bounds)
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if event?.subtype == UIEvent.EventSubtype.motionShake {
+            mainView.reloadButton.backgroundColor = UIColor.red
+            mainView.reloadButton.setTitle("RELOAD", for: .normal)
+            shootAudio.play()
+        }
+    }
+    
     @objc func fireButtonTapped() {
         if mainView.reloadButton.backgroundColor == UIColor.red {
             mainView.reloadButton.backgroundColor = UIColor.green
             mainView.reloadButton.setTitle("FIRE", for: .normal)
             reloadAudio.play()
-        } else {
-            mainView.reloadButton.backgroundColor = UIColor.red
-            mainView.reloadButton.setTitle("RELOAD", for: .normal)
-            shootAudio.play()
         }
     }
     
