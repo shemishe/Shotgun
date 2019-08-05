@@ -5,5 +5,5 @@ Shotgun is an iOS motion gesture app. This project was an idea I got when I was 
 I was extremely happy with how the app turned out, especially with Shotgun being one of my first apps that could be on the App Store. I'm proud of the fact that I was able to correctly utilize the MVC architecure pattern while utilizing variable closures and UIEvent motion gestures.
 
 <p align="center">
-<img src="images/shotgun/shotgun1.jpg" width="460" title="Shotgun"><img src="images/shotgun/shotgun2.jpg" width="460" title="Shotgun">
+<img src="images/shotgun/shotgun1-.jpg" width="460" title="Shotgun"><img src="images/shotgun/shotgun2.jpg" width="460" title="Shotgun">
 </p>
